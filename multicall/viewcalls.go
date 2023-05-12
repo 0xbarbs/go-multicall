@@ -7,7 +7,7 @@ import (
 
 type ViewCalls map[string]ViewCall
 
-func (calls ViewCalls) parseCallData() ([]byte, error) {
+func (calls ViewCalls) parseCallData(requireSuccess bool) ([]byte, error) {
 	boolean, _ := abi.NewType("bool", "", nil)
 	data, _ := abi.NewType("tuple[]", "", []abi.ArgumentMarshaling{
 		{Type: "address", Name: "Target"},
@@ -29,7 +29,7 @@ func (calls ViewCalls) parseCallData() ([]byte, error) {
 		test = append(test, mc)
 	}
 
-	return args.Pack(true, test)
+	return args.Pack(requireSuccess, test)
 }
 
 func (calls ViewCalls) getSortedKeys() []string {

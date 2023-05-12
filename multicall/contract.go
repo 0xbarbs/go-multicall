@@ -21,8 +21,8 @@ func NewContract(client *rpc.Client, config Config) Contract {
 	}
 }
 
-func (c *Contract) Call(calls ViewCalls) (ViewCallResults, error) {
-	callData, err := calls.parseCallData()
+func (c *Contract) Call(calls ViewCalls, requireSuccess bool) (ViewCallResults, error) {
+	callData, err := calls.parseCallData(requireSuccess)
 	if err != nil {
 		return nil, err
 	}
@@ -80,6 +80,16 @@ func (c *Contract) decodeResult(result string, calls ViewCalls) (ViewCallResults
 		item := reflected.Index(i)
 		success := item.FieldByName("Success").Bool()
 		bytes := item.FieldByName("Data").Bytes()
+
+		// If data length is 0, the call failed
+		if len(bytes) == 0 {
+			results[sortedKeys[i]] = ViewCallResult{
+				Success: false,
+				Data:    nil,
+			}
+			continue
+		}
+
 		call := sortedCalls[i]
 		value, err := c.convertToReturnType(bytes, call)
 
