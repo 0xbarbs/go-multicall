@@ -10,7 +10,7 @@ The current implementation is built to interact with the [MakerDAO Multicall2 co
 - [x] Cast to provided return types
 - [x] Create key value map for multi-calls
 - [x] Use MakerDAO tryAggregate() function to allow calls to fail
-- [ ] Support for tuple[] parameters
+- [x] Support for tuple[] parameters
 - [ ] Custom contract implementations via go interfaces
 - [ ] Alternative ViewCallResult structures
 
