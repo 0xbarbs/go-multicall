@@ -1,9 +1,9 @@
 package multicall_test
 
 import (
+	"github.com/0xbarbs/go-multicall/multicall"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/unioncredit/go-multicall/multicall"
 	"log"
 	"testing"
 )

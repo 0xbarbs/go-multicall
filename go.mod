@@ -1,4 +1,4 @@
-module github.com/unioncredit/go-multicall
+module github.com/0xbarbs/go-multicall
 
 go 1.18
 
