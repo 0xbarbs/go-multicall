@@ -15,7 +15,7 @@ const (
 )
 
 func TestContract_Call(t *testing.T) {
-	client, err := rpc.DialHTTP("https://mainnet.infura.io/v3/b663896ac18c44f2adbf552072bf278f")
+	client, err := rpc.DialHTTP("https://mainnet.infura.io/v3/")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,7 +34,7 @@ func TestContract_Call(t *testing.T) {
 		address,
 	)
 
-	result, err := contract.Call(calls)
+	result, err := contract.Call(calls, true)
 	if err != nil {
 		log.Fatal(err)
 	}

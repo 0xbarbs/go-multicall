@@ -19,7 +19,7 @@ The current implementation is built to interact with the [MakerDAO Multicall2 co
 ### Union User Manager example:
 
 ```go
-client, _ := rpc.DialHTTP("https://mainnet.infura.io/v3/b663896ac18c44f2adbf552072bf278f")
+client, _ := rpc.DialHTTP("https://mainnet.infura.io/v3/{API_KEY}")
 address := common.HexToAddress("0xb8150a1b6945e75d05769d685b127b41e6335bbc")
 
 contract := multicall.NewContract(client, multicall.Config{
